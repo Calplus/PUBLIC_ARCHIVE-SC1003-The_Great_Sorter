@@ -87,6 +87,8 @@ Validation is visual rather than just asserted: `matchesCriteria()`/`mapToScore(
 <details>
 <summary>Function-level flowcharts</summary>
 
+<div align="center">
+
 <table>
   <tr>
     <td align="center"><img src="assets/fetch-t-group-info.svg" alt="fetchTGroupInfo flowchart" width="320" /><br/><sub>fetchTGroupInfo()</sub></td>
@@ -105,5 +107,7 @@ Validation is visual rather than just asserted: `matchesCriteria()`/`mapToScore(
     <td></td>
   </tr>
 </table>
+
+</div>
 
 </details>
