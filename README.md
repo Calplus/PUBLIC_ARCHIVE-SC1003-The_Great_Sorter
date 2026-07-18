@@ -81,7 +81,8 @@ That maps directly onto the end-to-end pipeline:
   <img src="assets/calvin-grid.svg" alt="Calvin Grid distribution diagram" width="420" />
 </p>
 
-The "Calvin Grid" is the actual distribution trick: lay the 50 students, already sorted from most-common profile to rarest, into a 5-row by 10-column grid, filled row by row, left to right. Each of the 10 columns becomes one subgroup. Because a run of identical, common profiles only ever spans part of a row before the next-most-common profile takes over, reading down any single column picks up a different profile from almost every row, so every subgroup ends up with a mix of common and rare students instead of one subgroup getting all the "easy" matches and another getting all the leftovers.
+- **In plain terms**: it works like dealing a sorted deck of cards into 10 piles, one card at a time, left to right, looping back to pile 1 after pile 10. Because the "deck" (the 50 students) is sorted from most-common profile to rarest before dealing starts, every pile ends up with a mix of common and rare students instead of one pile getting all of the same type first.
+- **More precisely**: the "Calvin Grid" lays the 50 sorted students into a 5-row by 10-column grid, filled row by row, left to right. Each of the 10 columns becomes one subgroup. Because a run of identical, common profiles only ever spans part of a row before the next-most-common profile takes over, reading down any single column picks up a different profile from almost every row, so every subgroup ends up with a mix of common and rare students instead of one subgroup getting all the "easy" matches and another getting all the leftovers.
 
 Validation is visual rather than just asserted: `matchesCriteria()`/`mapToScore()` check every one of the 1,200 output subgroups against target ratios (a 3-2 gender split, a 1-1-1-1-1 school spread), and Matplotlib renders a diversity-score histogram plus pie charts for the lowest- and highest-scoring subgroups.
 
@@ -114,6 +115,12 @@ Validation is visual rather than just asserted: `matchesCriteria()`/`mapToScore(
 </details>
 
 ## Results
+
+**How the diversity score works**: `mapToScore()` sums three sub-scores, one per category, each worth up to 3 points, for a maximum of 9:
+
+- **Gender**: scored by how close the 5-student split is to an even 3-2: 3 points for a 3-2 split, 2 for 4-1, 1 for a single dominant value.
+- **CGPA**: scored the same way as Gender.
+- **School**: scored by how spread out the 5 students are across schools: 3 points if all 5 attend different schools, stepping down through 2-1-1-1, 2-2-1, 3-1-1, 3-2, to 0 points if all 5 share one school.
 
 Actual output from running the notebook end to end. 431 of the 1,200 subgroups (36%) hit the maximum diversity score of 9, and none scored below 5, a direct result of the priority-driven bucket-fill rather than random assignment:
 
