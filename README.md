@@ -32,7 +32,7 @@ This project implements computational thinking principles (decomposition, patter
 - Custom deterministic bucket-fill algorithm, no ML and no randomness: balances Gender, School (18 categories), and CGPA across 6,000 students split into 120 tutorial groups of 50, each further divided into 10 subgroups of 5.
 - Priority-driven balancing: computes the standard deviation of each category's value-frequencies to decide which attribute needs balancing first, then walks a generated "requirement ladder" from the most common student profile down to the rarest.
 - Pure Python stdlib for the core algorithm (manual regex-based CSV parsing, no pandas), with NumPy/Matplotlib used only for post-hoc validation charts.
-- Built as a team for SC1003 Computational Thinking, Nov 2024.
+- Built as a team for SC1003 Introduction to Computational Thinking and Programming, Nov 2024.
 
 ## Table of Contents
 
